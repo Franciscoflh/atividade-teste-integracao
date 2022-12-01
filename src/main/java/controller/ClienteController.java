@@ -17,8 +17,8 @@ public class ClienteController {
     private ClienteService service;
 
     @GetMapping("/")
-    public ResponseEntity<Cliente> listarTodos(){
-        var optional = service.todos();
+    public ResponseEntity<Cliente> listAll(){
+        var optional = service.all();
 
         if (!optional.isEmpty()){
             return ResponseEntity.ok().build();

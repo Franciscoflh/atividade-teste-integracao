@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.stream.Collectors;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,7 +16,7 @@ public class CidadeRepositoryTest {
     private CidadeRepository cidadeRepository;
 
     @Test
-    void deveBuscarCidadesQueContenhamNome(){
+    void buscarCidadesPorNome(){
         String nome = "São";
         var cidades = cidadeRepository.findByName(nome);
 
@@ -28,7 +26,7 @@ public class CidadeRepositoryTest {
     }
 
     @Test
-    void deveBuscarCidadePorFretesId(){
+    void buscarCidadePorIdFretes(){
         int expectedId = 1;
         var cidade = cidadeRepository.findByIdFrete(expectedId);
 
@@ -40,7 +38,7 @@ public class CidadeRepositoryTest {
     }
 
     @Test
-    void deveBuscarCidadesPorUf(){
+    void buscarCidadesPorEstado(){
         String estado = "GO";
         var cidades = cidadeRepository.findByEstado(estado);
 

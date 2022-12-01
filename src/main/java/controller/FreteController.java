@@ -16,7 +16,7 @@ public class FreteController {
     private FreteService service;
 
     @GetMapping("/")
-    public ResponseEntity<Frete> listarTodos(){
+    public ResponseEntity<Frete> listAll(){
         var optional = service.all();
 
         if (!optional.isEmpty()){
@@ -34,7 +34,7 @@ public class FreteController {
     }
 
     @GetMapping("/cliente/{id}")
-    public ResponseEntity<Frete> buscaPorCliente_Id(@PathVariable Integer id) {
+    public ResponseEntity<Frete> buscaPorIdCliente(@PathVariable Integer id) {
         var optional = service.buscaPorIdCliente(id);
 
         if (optional != null) {
@@ -45,7 +45,7 @@ public class FreteController {
     }
 
     @GetMapping("/cidade/{id}")
-    public ResponseEntity<Frete> buscaPorCidade_Id(@PathVariable Integer id) {
+    public ResponseEntity<Frete> buscaPorIdCidade(@PathVariable Integer id) {
         var optional = service.buscaPorIdCidade(id);
 
         if (optional != null) {
@@ -56,7 +56,7 @@ public class FreteController {
     }
 
     @GetMapping("/cliente/order/{id}")
-    public ResponseEntity<Frete> buscarPorCliente_IdOrderByValcrAsc(@PathVariable Integer id) {
+    public ResponseEntity<Frete> buscarPorIdClienteOrderByValor(@PathVariable Integer id) {
         var optional = service.buscarIdClienteOrderByValor(id);
 
         if (optional != null) {
@@ -73,8 +73,8 @@ public class FreteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Frete> atualiza(@PathVariable Integer id,
-                                          @RequestBody @Valid Frete frete) {
+    public ResponseEntity<Frete> update(@PathVariable Integer id,
+                                        @RequestBody @Valid Frete frete) {
         var optional = service.buscaId(id);
 
         if(optional.isPresent()){
@@ -87,7 +87,7 @@ public class FreteController {
     }
 
     @DeleteMapping("remover/{id}")
-    public ResponseEntity<?> remover(@PathVariable Integer id) {
+    public ResponseEntity<?> remove(@PathVariable Integer id) {
         var optional = service.buscaId(id);
 
         if (optional.isPresent()) {

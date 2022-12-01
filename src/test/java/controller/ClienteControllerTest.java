@@ -21,7 +21,7 @@ class ClienteControllerTest {
     private TestRestTemplate testRestTemplate;
 
     @Test
-    void deveListarTodosClientes() {
+    void listarTodosClientes() {
         ParameterizedTypeReference<List<Cliente>> tipoRetorno = new ParameterizedTypeReference<List<Cliente>>() {};
 
         ResponseEntity<List<Cliente>> response = testRestTemplate.exchange(
@@ -32,7 +32,7 @@ class ClienteControllerTest {
     }
 
     @Test
-    void deveBuscaClientePorId() {
+    void buscaClientePorId() {
         int expectedId = 4;
         ResponseEntity<Cliente> response = testRestTemplate.exchange(
                 "/clientes/id/{id}", HttpMethod.GET, null, Cliente.class, expectedId
@@ -43,7 +43,7 @@ class ClienteControllerTest {
     }
 
     @Test
-    void deveBuscarClientePorNome() {
+    void buscarClientePorNome() {
         ParameterizedTypeReference<List<Cliente>> tipoRetorno = new ParameterizedTypeReference<List<Cliente>>() {};
 
         String expectedName = "L";
@@ -55,8 +55,8 @@ class ClienteControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-    @Test // RETURN NOT_FOUND
-    void deveBuscarClientePorFretes_Id() {
+    @Test
+    void buscarClientePorIdFretes() {
         int expectedId = 10;
         ResponseEntity<Cliente> response = testRestTemplate.exchange(
                 "/clientes/fretes/{id}", HttpMethod.GET, null, Cliente.class, expectedId
@@ -80,7 +80,7 @@ class ClienteControllerTest {
 
 
     @Test
-    void deveRemoverClientePorId() {
+    void removerClientePorId() {
         int expectedId = 1;
         ResponseEntity<?> response = testRestTemplate.exchange(
                 "/clientes/remover/{id}", HttpMethod.DELETE, null, Cliente.class, expectedId

@@ -15,8 +15,8 @@ public class CidadeServiceTest {
     private CidadeService service;
 
     @Test
-    void deveSalvarCidade(){
-        String nomeCidade = "Null City";
+    void salvarCidade(){
+        String nomeCidade = "Santo Amaro";
         Cidade cidade = Cidade.builder().nome(nomeCidade).taxa(13).build();
         service.saveCliente(cidade);
 

@@ -15,7 +15,7 @@ public class ClienteRepositoryTest {
     private ClienteRepository repository;
 
     @Test
-    void deveBuscarClienteQueContenhamNome(){
+    void buscarClientePorNome(){
         String nome = "L";
         var clientes = repository.findByName(nome);
 
@@ -25,13 +25,12 @@ public class ClienteRepositoryTest {
     }
 
     @Test
-    void deveBuscarClientePorId(){
+    void buscarClientePorId(){
         int expectedId = 1;
         var cliente = repository.findByIdFretes(expectedId);
 
         var frete = (cliente.getFretes().stream()
-                .filter(fretes -> fretes.getId() == expectedId)
-                .collect(Collectors.toList())
+                .filter(fretes -> fretes.getId() == expectedId).toList()
         );
 
         assertEquals(expectedId, frete.get(0).getId());

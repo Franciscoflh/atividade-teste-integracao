@@ -22,7 +22,7 @@ class FreteControllerTest {
     private TestRestTemplate testRestTemplate;
 
     @Test
-    void deveListarTodosFretes() {
+    void listarTodosFretes() {
         ParameterizedTypeReference<List<Frete>> tipoRetorno = new ParameterizedTypeReference<List<Frete>>() {};
         ResponseEntity<List<Frete>> response = testRestTemplate.exchange(
                 "/fretes/", HttpMethod.GET,null, tipoRetorno
@@ -32,7 +32,7 @@ class FreteControllerTest {
     }
 
     @Test
-    void deveBuscarFretePorId() {
+    void buscarFretePorId() {
         int expectedId = 2;
         ResponseEntity<Frete> response = testRestTemplate.exchange(
                 "/fretes/id/{id}", HttpMethod.GET,null, Frete.class, expectedId
@@ -42,7 +42,7 @@ class FreteControllerTest {
     }
 
     @Test
-    void deveBuscarFretePorCliente_Id() {
+    void buscarFretePorIdCliente() {
         int expectedId = 2;
         ParameterizedTypeReference<List<Frete>> tipoRetorno = new ParameterizedTypeReference<List<Frete>>() {};
         ResponseEntity<List<Frete>> response = testRestTemplate.exchange(
@@ -52,8 +52,8 @@ class FreteControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-    @Test // ERROR get.body return NULL
-    void deveBuscarFretePorCidade_Id() {
+    @Test
+    void buscarFretePorIdCidade() {
         int expectedId = 5;
         ParameterizedTypeReference<List<Frete>> tipoRetorno = new ParameterizedTypeReference<>() {};
         ResponseEntity<List<Frete>> response = testRestTemplate.exchange(
@@ -63,8 +63,8 @@ class FreteControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-    @Test // ERROR get.body return NULL
-    void deveBuscarFretePorCliente_IdOrderByValcrAsc() {
+    @Test
+    void dbuscarFretePorIdClienteOrderByValor() {
         int expectedId = 10;
         ParameterizedTypeReference<List<Frete>> tipoRetorno = new ParameterizedTypeReference<List<Frete>>() {};
         ResponseEntity<List<Frete>> response = testRestTemplate.exchange(
@@ -75,8 +75,8 @@ class FreteControllerTest {
     }
 
     @Test
-    void deveSalvarFrete() {
-        Frete frete = Frete.builder().valor(10).peso(50).descricao("caneta").build();
+    void salvarFrete() {
+        Frete frete = Frete.builder().valor(10).peso(50).descricao("computador").build();
         HttpEntity<Frete> httpEntity = new HttpEntity<>(frete);
 
         ResponseEntity<Frete> response = testRestTemplate.exchange(

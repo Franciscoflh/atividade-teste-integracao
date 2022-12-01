@@ -3,6 +3,7 @@ package repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Description;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,14 +13,15 @@ public class FreteRepositoryTest {
     private FreteRepository repository;
 
     @Test
-    void deveMostrarTodosFretes(){
+    @Description("Deve mostrar todos os fretes")
+    void mostrarFretes(){
         var frete = repository.findAll();
 
         assertFalse(frete.isEmpty());
     }
 
     @Test
-    void deveBuscarFretePorId(){
+    void buscaFretePorId(){
         int expectedId = 1;
         var frete = repository.findById(expectedId);
 
@@ -27,7 +29,7 @@ public class FreteRepositoryTest {
     }
 
     @Test
-    void deveBuscarFretePorClienteId(){
+    void buscarFretePorIdCliente(){
         int expectedId = 1;
         var frete = repository.findByIdCliente(expectedId);
 
@@ -37,7 +39,7 @@ public class FreteRepositoryTest {
     }
 
     @Test
-    void deveBuscarFretePorClienteIdOrdenadoPorValor(){
+    void buscarFretePorIdClienteOrdenado(){
         int expectedId = 1;
         var frete = repository.findByIdClienteOrderByValor(expectedId);
 
@@ -47,7 +49,7 @@ public class FreteRepositoryTest {
     }
 
     @Test
-    void deveBuscarFretePorCidadeId() {
+    void buscarFretePorIdCidade() {
         int expectedId = 1;
         var frete = repository.findByIdCidade(expectedId);
 

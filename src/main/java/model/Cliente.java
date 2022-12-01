@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 public class Cliente {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_cliente")
+    @Column(name = "id_cliente")
     private Integer id;
 
     @JsonIgnore

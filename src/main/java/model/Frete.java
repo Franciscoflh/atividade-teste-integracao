@@ -13,17 +13,17 @@ import lombok.*;
 public class Frete {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_frete")
+    @Column(name = "id_frete")
     private Integer id;
 
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "codigo_cliente", referencedColumnName = "codigo_cliente")
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
     private Cliente cliente;
 
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "codigo_cidade", referencedColumnName = "codigo_cidade")
+    @JoinColumn(name = "id_cidade", referencedColumnName = "id_cidade")
     private Cidade cidade;
 
     private String descricao;

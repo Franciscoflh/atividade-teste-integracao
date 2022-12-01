@@ -16,7 +16,7 @@ public class FreteServiceTest {
     private FreteService service;
 
     @Test
-    void deveSalvarFrete() {
+    void salvarFrete() {
         Frete frete = Frete.builder().peso(10).valor(10).build();
         service.salvaFrete(frete);
 
@@ -25,7 +25,7 @@ public class FreteServiceTest {
     }
 
     @Test
-    void deveRemoverFrete() {
+    void removerFrete() {
         int idFreteRemovido = 1;
         service.removeId(idFreteRemovido);
 

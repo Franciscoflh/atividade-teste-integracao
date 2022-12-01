@@ -21,7 +21,7 @@ class CidadeControllerTest {
     private TestRestTemplate testRestTemplate;
 
     @Test
-    void deveListarTodasCidades() {
+    void listarTodasCidades() {
         ParameterizedTypeReference<List<Cidade>> tipoRetorno = new ParameterizedTypeReference<List<Cidade>>() {};
 
         ResponseEntity<List<Cidade>> response = testRestTemplate.exchange(
@@ -32,7 +32,7 @@ class CidadeControllerTest {
     }
 
     @Test
-    void deveBuscarCidadePorId() {
+    void buscarCidadePorId() {
         int expectedId = 27;
         ResponseEntity<Cidade> response = testRestTemplate.exchange(
                 "/cidades/id/{id}",HttpMethod.GET,null, Cidade.class, expectedId
@@ -43,10 +43,10 @@ class CidadeControllerTest {
     }
 
     @Test
-    void deveBuscarCidadePorNome() {
+    void buscarCidadePorNome() {
         ParameterizedTypeReference<List<Cidade>> tipoRetorno = new ParameterizedTypeReference<>() {};
 
-        String expectedName = "Recife";
+        String expectedName = "Belém";
         ResponseEntity<List<Cidade>> response = testRestTemplate.exchange(
                 "/cidades/nome/{nome}",HttpMethod.GET, null, tipoRetorno,expectedName
         );
@@ -55,19 +55,19 @@ class CidadeControllerTest {
     }
 
     @Test
-    void deveBuscarCidadePorUf() {
+    void buscarCidadePorEstado() {
         ParameterizedTypeReference<List<Cidade>> tipoRetorno = new ParameterizedTypeReference<List<Cidade>>() {};
 
-        String expectedUf = "MA";
+        String expectedUf = "GO";
         ResponseEntity<List<Cidade>> response = testRestTemplate.exchange(
-                "/cidades/uf/{uf}",HttpMethod.GET, null, tipoRetorno,expectedUf
+                "/cidades/estado/{estado}",HttpMethod.GET, null, tipoRetorno,expectedUf
         );
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
-    void deveBuscarCidadePorFrete_id() {
+    void buscarCidadePorIdFrete() {
         int expectedId = 1;
         ResponseEntity<Cidade> response = testRestTemplate.exchange(
                 "/cidades/frete/{id}",HttpMethod.GET,null, Cidade.class, expectedId
@@ -77,8 +77,8 @@ class CidadeControllerTest {
     }
 
     @Test
-    void deveSalvarCidade(){
-        Cidade cidade = Cidade.builder().nome("Null City").taxa(10).build();
+    void salvarCidade(){
+        Cidade cidade = Cidade.builder().nome("Santo Amaro").taxa(10).build();
         HttpEntity<Cidade> httpEntity = new HttpEntity<>(cidade);
 
         ResponseEntity<Cidade> response = testRestTemplate.exchange(
@@ -89,7 +89,7 @@ class CidadeControllerTest {
     }
 
     @Test
-    void deveRemoverCidadePorId(){
+    void removerCidadePorId(){
         int expectedId = 1;
         ResponseEntity<?> response = testRestTemplate.exchange(
                 "/cidades/remover/{id}", HttpMethod.DELETE, null, Cidade.class, expectedId

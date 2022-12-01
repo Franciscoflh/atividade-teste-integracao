@@ -47,9 +47,9 @@ public class CidadeController {
         return ResponseEntity.ok(cidades);
     }
 
-    @GetMapping("uf/{uf}")
-    public ResponseEntity<List<Cidade>> buscaPorUf(@PathVariable String uf) {
-        var cidades = service.buscarPorEstado(uf);
+    @GetMapping("estado/{estado}")
+    public ResponseEntity<List<Cidade>> buscaPorEstado(@PathVariable String estado) {
+        var cidades = service.buscarPorEstado(estado);
 
         if(cidades.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -58,7 +58,7 @@ public class CidadeController {
     }
 
     @GetMapping("/frete/{id}")
-    public ResponseEntity<Cidade> buscarPorFrete_id(@PathVariable Integer id){
+    public ResponseEntity<Cidade> buscarPorIdFrete(@PathVariable Integer id){
         var optional = service.buscarPorIdFrete(id);
 
         if(optional == null){
@@ -68,7 +68,7 @@ public class CidadeController {
     }
 
     @PostMapping("/inserir")
-    public ResponseEntity<Cidade> salva(@RequestBody @Valid Cidade cidade) throws URISyntaxException {
+    public ResponseEntity<Cidade> salvar(@RequestBody @Valid Cidade cidade) throws URISyntaxException {
         var cidadeSalva = service.saveCliente(cidade);
         return new ResponseEntity<>(cidadeSalva, HttpStatus.CREATED);
     }

@@ -16,8 +16,8 @@ public class ClienteServiceTest {
     private ClienteService service;
 
     @Test
-    void deveSalvarCliente() {
-        String nomeCliente = "Fernando Pessoa";
+    void salvarCliente() {
+        String nomeCliente = "Francisco Remo";
         Cliente cliente = Cliente.builder().nome(nomeCliente).build();
         service.salva(cliente);
 
@@ -28,7 +28,7 @@ public class ClienteServiceTest {
     }
 
     @Test
-    void deveRemoverCliente() {
+    void removerCliente() {
         int idClienteRemovido = 1;
         service.removePelo(idClienteRemovido);
 
